@@ -3,10 +3,10 @@ let nameStore = prompt('Название вашего магазина?');
 
 let mainList = {
 	budget: budget,
- nameStore: nameStore,
+	nameStore: nameStore,
 	shopGoods: [],
 	employers: {},
-	open: true,
+	open: true
 };
 
 for (let i = 0; i < 5; i++) {
@@ -16,15 +16,12 @@ for (let i = 0; i < 5; i++) {
 	if ((typeof(a)) === 'string' && a !== null && a != '' && a.length < 50) {
 		console.log('Все верно!');
 		mainList.shopGoods[i] = a;
-	} else  {
-		console.log('Что-то пошло не так, попробуйте заново');
-		break;
 	}
 }
 
 // While 
 
-/*l et i = 0;
+/* let i = 0;
 
 while (i < 5) {
 
@@ -33,9 +30,6 @@ while (i < 5) {
 	if ((typeof(a)) === 'string' && a !== null && a != '' && a.length < 50) {
 		console.log('Все верно!');
 		mainList.shopGoods[i] = a;
-	} else  {
-		console.log('Что-то пошло не так, попробуйте заново');
-		break;
 	}
 	i++;
 } */
@@ -49,9 +43,6 @@ do {
 	if ((typeof(a)) === 'string' && a !== null && a != '' && a.length < 50) {
 		console.log('Все верно!');
 		mainList.shopGoods[i] = a;
-	} else  {
-		console.log('Что-то пошло не так, попробуйте заново');
-		break;
 	}
 	i++;
 }
