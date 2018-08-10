@@ -1,9 +1,9 @@
 let week = ['понедельник', 'вторник', 'среда', 'четверг', 'пятница', 'суббота', 'воскресенье'];
-
+let now = new Date();
 week.forEach(function(item, i, weekNew) {
 	if (i === 5 || i === 6) {
 		document.write('<b>' + weekNew[i] + '</b>' + '<br>');
-	} else if (i === 3) {
+	} else if (i === now.getDay()-1) {
 		document.write('<i>' + weekNew[i] + '</i>' + '<br>');
 	} else {
 		document.write(weekNew[i] + '<br>');
