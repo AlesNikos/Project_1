@@ -13,7 +13,7 @@ function start() {
 	nameStore = prompt('Название вашего магазина?').toUpperCase();
 	time = 21;
 }
-start();
+// start();
 
 let mainList = {
 	budget: budget,
@@ -36,7 +36,7 @@ function chooseGoods() {
 		}
 	}
 }
-chooseGoods();
+// chooseGoods();
 
 function workTime(time) {
 	if (time < 0) {
@@ -49,13 +49,13 @@ function workTime(time) {
 		console.log('В сутках только 24 часа!');
 	}
 }
-workTime(18);
+// workTime(18);
 
 function dayBudget() {
 	alert('Ваш бюджет на 1 день: ' + Math.round(mainList.budget / 30) + ' денежных единиц');
 
 }
-dayBudget();
+// dayBudget();
 
 function makeDiscount(price) {
 	if (mainList.discount == true) {
@@ -63,19 +63,19 @@ function makeDiscount(price) {
 	}
 	console.log(price);
 }
-makeDiscount(1000);
+// makeDiscount(1000);
 
 function hireEmployees() {
 	for (let i = 1; i <= 4; i++) {
 		let b = prompt('Как зовут сотрудника?');
-
+		
 			if ((typeof(b)) === 'string' && b !== null && b != '' && b.length < 50) {
 			console.log('Все верно!');
-			mainList.employers[i] = b;
+			mainList.employers[i] = i + ' - ' + b;
 		} else {
 			i = i - 1;
 		}
 	}
 }
-// hireEmployees();
+hireEmployees();
 console.log(mainList);
