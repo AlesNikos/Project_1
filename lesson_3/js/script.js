@@ -1,7 +1,7 @@
-let budget, 
-	nameStore,
-	time,
-	price
+let budget,
+nameStore,
+time,
+price
 
 function start() {
 		budget = prompt('Ваш бюджет на месяц?');
