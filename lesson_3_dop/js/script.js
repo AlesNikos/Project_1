@@ -15,11 +15,13 @@ let total = 0;
 
 function squareSum() {
 	for (let i = 0; i < arr.length; i++) {
-		let num = Math.pow(arr[i], 3);
-		// console.log(num);
-		total += num;
+			if ((typeof(arr[i])) === 'number') {
+			let num = Math.pow(arr[i], 3);
+			// console.log(num);
+			total += num;
+		}
 	}
-	console.log(Math.sqrt(total));
+	console.log(Math.round(Math.sqrt(total)));
 }
 squareSum();
 
@@ -30,6 +32,7 @@ function showMessage (text) {
 			text = text.trim();
 			console.log(text);
 		} else if (text.length > 50) {
+			text = text.trim();
 			text = (text.slice(1,50) + '...');
 			console.log(text);
 		}
