@@ -1,7 +1,7 @@
 let budget,
 	nameStore,
 	time,
-	price
+	price;
 
 function start() {
 		budget = prompt('Ваш бюджет на месяц?', "");
@@ -82,7 +82,7 @@ let mainList = {
 		}
 		mainList.shopItems.forEach(function(item, i, arr) {
 			document.write("У нас вы можете купить: " + (++i) + ". "+ item + '<br>');
-		})
+		});
 	}		
 };
 
