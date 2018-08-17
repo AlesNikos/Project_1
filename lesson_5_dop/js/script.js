@@ -51,23 +51,26 @@ document.body.appendChild(div);
 let dat1 = document.createElement('input');
 let dat2 = document.createElement('input');
 let dat3 = document.createElement('input');
-dat1.setAttribute('type', 'text');
-dat2.setAttribute('type', 'text');
+dat1.setAttribute('type', 'date');
+dat2.setAttribute('type', 'date');
 dat3.setAttribute('type', 'button');
 dat3.value = 'Сравнить';
 dat3.addEventListener("click", getDiffDays);
+const textVal = document.createElement('p');
 
 div.appendChild(dat1);
 div.appendChild(dat2);
 div.appendChild(dat3);
+div.appendChild(textVal);
 console.log(dat1);
 
 function getDiffDays() {
-	let date1 = Date.parse(dat1);
-	let date2 = Date.parse(dat2);
+	let date1 = Date.parse(dat1.value);
+	let date2 = Date.parse(dat2.value);
 	let timeDiff = Math.abs(date2 - date1);
 	let diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
-	document.write("Разница между датами " + diffDays + " дней.");
+	//document.write("Разница между датами " + diffDays + " дней.");
+	textVal.textContent = "Разница между датами " + diffDays + " дней.";
 	console.log(date1);
 	console.log(date2);
 }

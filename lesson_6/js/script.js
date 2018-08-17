@@ -51,13 +51,11 @@ btnGoodsItem.addEventListener('click', () => {
 		for (let i = 0; i < goodsItem.length; i++) {
 			let a = goodsItem[i].value; 
 			
-			if ((typeof(a)) === 'string' && a !== null && a.length < 50) {
+			if ((typeof(a)) === 'string' && a.trim().length > 0 && a !== null && a.length < 50) {
 				console.log('Все верно!');
 				mainList.shopGoods[i] = a;
 				goodsValue.textContent = mainList.shopGoods;
-			} else {
-				i = i - 1;
-			}
+			} 
 		}
 });
 
@@ -100,11 +98,18 @@ btnCountBudget.addEventListener('click', () => {
 });
 
 btnHireEmployers.addEventListener('click', () => {
+	let str = '';
 	for (let i = 0; i < hireEmployersItem.length; i++) {
 			let name = hireEmployersItem[i].value;
-			mainList.employers[i] = name;
-			employersValue.textContent += mainList.employers[i] + ', ';
+				if (name.trim().length > 0) {
+				mainList.employers[i] = name;
+				str += mainList.employers[i] + ', ';
+			}
 		}
+		if (str.endsWith(', ')) {
+			str = str.substr(0, str.length -2);
+		}
+		employersValue.textContent = str;
 });
 
 discountValue.addEventListener('click', () => {
@@ -120,6 +125,7 @@ function checkGoodsItem() {
 	for (let i = 0; i < goodsItem.length; i++) {
 		if (goodsItem[i].value != '') {
 			btnGoodsItem.disabled = false;
+			return;
 		} else {
 			btnGoodsItem.disabled = true;
 		}
@@ -130,15 +136,26 @@ checkGoodsItem();
 
 function checkhireEmployersItem() {
 	for (let i = 0; i < hireEmployersItem.length; i++) {
+
 		if (hireEmployersItem[i].value != '') {
 			btnHireEmployers.disabled = false;
+			return;
 		} else {
 			btnHireEmployers.disabled = true;
 		}
 		hireEmployersItem[i].addEventListener('keypress', checkhireEmployersItem);
+		hireEmployersItem[i].addEventListener('keypress', checkIsCyr);
 	}
 }
 checkhireEmployersItem();
+
+function checkIsCyr(event) {
+	let key = event.key;
+	if(key.match('[А-я]') === null) {
+		event.preventDefault();
+		return false;
+	}
+}
 
 
 function checkCountBudget () {

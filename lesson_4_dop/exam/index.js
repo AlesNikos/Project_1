@@ -1,21 +1,31 @@
 function getFriendlyNumbers(start, end) {
 	let arr = [];
-	for (let i = start; i <= end; i ++) {
+	if ((typeof(start)) != 'number' || (typeof(end)) != 'number') {
+			return false;
+		}
+		if (start > end || start < 0) {
+			return false;
+		}
+		if (isFloat(start) || isFloat(end)) return false;
+
+		for (let i = start; i <= end; i ++) {
 		let y = [];
 		let a = getDivisorsSum(i);
 		
 		if (getDivisorsSum(a) == i && a <= end && i < a) {
 			y.push(i, a);
 			arr.push(y);
-			console.log(arr);
-		 } //else if ((i >= 1 && i <= 100) || (i >= 284 && i <= 500)) {
-		// 	arr = y;
-		// }
+			//console.log(arr);
+		 }
 	}
 	console.log(arr);
- // return arr;
+ return arr;
 }
-// getFriendlyNumbers(1, 300);
+// getFriendlyNumbers(300, 1);
+
+function isFloat(n){
+    return Number(n) === n && n % 1 !== 0;
+}
 
 function getDivisorsSum(num) {
 	return getSum(getDivisors(num));
@@ -39,8 +49,8 @@ function getSum(arr) {
 	return sum;
 }
 
-// module.exports = {
-//     firstName: 'Name',
-//     secondName: 'Surname',
-//     task: getFriendlyNumbers
-// }
+module.exports = {
+    firstName: 'Name',
+    secondName: 'Surname',
+    task: getFriendlyNumbers
+}
