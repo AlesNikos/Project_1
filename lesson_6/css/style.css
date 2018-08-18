@@ -54,6 +54,10 @@ body {
   width: 200px;
   height: 50px;
 }
+.open-btn:hover {
+  color: #15198e;
+  background-color: #999be8;
+}
 .main {
   width: 100%;
   margin-top: 30px;
@@ -142,6 +146,15 @@ body {
   display: block;
   margin: 0 auto;
   margin-top: 10px;
+  border-radius: 5px;
+}
+.main-functions .goods-item-btn:disabled {
+  color: #fff;
+  background-image: linear-gradient(#cc0630 0%, #8f0222 75%, #6d0019 100%);
+}
+.main-functions .goods-item-btn:enabled {
+  color: #fff;
+  background-image: linear-gradient(#b8e1fc 0%, #90bcea 35%, #90bff0 50%, #6ba8e5 51%, #bdf3fd 100%);
 }
 .main-functions .choose-item,
 .main-functions .time-value,
@@ -161,6 +174,16 @@ body {
   display: inline-block;
   margin-left: 25%;
 }
+.main-functions .count-budget-btn:disabled {
+  border-radius: 5px;
+  color: #fff;
+  background-image: linear-gradient(#cc0630 0%, #8f0222 75%, #6d0019 100%);
+}
+.main-functions .count-budget-btn:enabled {
+  border-radius: 5px;
+  color: #fff;
+  background-image: linear-gradient(#b8e1fc 0%, #90bcea 35%, #90bff0 50%, #6ba8e5 51%, #bdf3fd 100%);
+}
 .main-functions .hire-employers-item {
   display: block;
   margin: 0 auto;
@@ -173,4 +196,13 @@ body {
   display: block;
   margin: 0 auto;
   margin-top: 10px;
+}
+.main-functions .hire-employers-btn:disabled {
+  color: #fff;
+  background-image: linear-gradient(#cc0630 0%, #8f0222 75%, #6d0019 100%);
+}
+.main-functions .hire-employers-btn:enabled {
+  border-radius: 5px;
+  color: #fff;
+  background-image: linear-gradient(#b8e1fc 0%, #90bcea 35%, #90bff0 50%, #6ba8e5 51%, #bdf3fd 100%);
 }
