@@ -1,4 +1,6 @@
 window.addEventListener('DOMContentLoaded', function () {
+	
+	// Tabs
 
 	let tab = document.getElementsByClassName('info-header-tab'),
 		tabContent = document.getElementsByClassName('info-tabcontent'),
@@ -33,4 +35,3 @@ window.addEventListener('DOMContentLoaded', function () {
 		}
 	});
 
-});
