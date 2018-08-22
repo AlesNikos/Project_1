@@ -1,5 +1,30 @@
 window.addEventListener('DOMContentLoaded', function () {
 	
+	// Плавная прокрутка
+
+	let elements = document.querySelectorAll('a[href*="#"]'),
+	anchors = [].slice.call(elements),
+	animationTime = 300,
+	framesCount = 20;
+
+	anchors.forEach(function (item) {
+		item.addEventListener('click', function (event) {
+			event.preventDefault();
+
+			let coordY = document.querySelector(item.getAttribute('href')).getBoundingClientRect().top;
+			let scroller = setInterval(function () {
+				let scrollBy = coordY / framesCount;
+
+				if (scrollBy > window.pageYOffset - coordY && window.innerHeight + window.pageYOffset < document.body.offsetHeight) {
+					window.scrollBy(0, scrollBy);
+				} else {
+					window.scrollTo(0, coordY);
+					clearInterval(scroller);
+				}
+			}, animationTime / framesCount);
+		});
+	});
+
 	// Tabs
 
 	let tab = document.getElementsByClassName('info-header-tab'),
@@ -37,7 +62,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
 	// Timer
 
-	let deadline = '2018-08-21 23:30:00';
+	let deadline = '2018-08-22 23:30:00';
 
 	function getTimeRemaining(endtime) {
 		let t = Date.parse(endtime) - Date.parse(new Date()),
@@ -72,7 +97,11 @@ window.addEventListener('DOMContentLoaded', function () {
 				return true;
 			} 
 
-			hours.innerHTML = ('0' + t.hours).slice(-2);
+			if (t.hours < 10) {
+				t.hours = '0' + t.hours;
+			}
+
+			hours.innerHTML = t.hours;
 			minutes.innerHTML = ('0' + t.minutes).slice(-2);
 			seconds.innerHTML = ('0' + t.seconds).slice(-2);
 		}
