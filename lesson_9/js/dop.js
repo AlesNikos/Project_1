@@ -1,7 +1,7 @@
 let age = document.getElementById('age');
 
-age.addEventListener('change', function showUser(surname,name) {
-	surname = "Пупкин";
-	name = "Василий";
-	alert("Пользователь " + surname + " " + name + ", его возраст " + this.value);
-});
+function showUser(surname, name) {
+  alert("Пользователь " + surname + " " + name + ", его возраст " + this.value);
+}
+ 
+showUser.call(age, 'Пупкин', 'Вася');
