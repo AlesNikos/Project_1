@@ -23,7 +23,7 @@ window.addEventListener('DOMContentLoaded', function () {
 				}
 			}, animationTime / framesCount);
 		});
-	});
+	});*/
 
 	// Tabs
 
@@ -59,7 +59,7 @@ window.addEventListener('DOMContentLoaded', function () {
 			}
 		}
 	});
-*/
+	
 	// Timer
 
 	let deadline = '2018-08-24 23:30:00';
