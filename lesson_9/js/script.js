@@ -31,7 +31,7 @@ window.addEventListener('DOMContentLoaded', function () {
 		tabContent = document.getElementsByClassName('info-tabcontent'),
 		info = document.getElementsByClassName('info-header')[0];
 
-	function hideTabContent(a) {
+	let hideTabContent = a => {
 			for (let i = a; i < tabContent.length; i++) {
 				tabContent[i].classList.remove('show');
 				tabContent[i].classList.add('hide');
@@ -40,7 +40,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
 		hideTabContent(1);
 
-	function showTabContent(b) {
+	let showTabContent = b => {
 		if (tabContent[b].classList.contains('hide')) {
 			hideTabContent(0);
 			tabContent[b].classList.remove('hide');
@@ -48,7 +48,7 @@ window.addEventListener('DOMContentLoaded', function () {
 		}
 	}
 
-	info.addEventListener('click', function(event) {
+	info.addEventListener('click', event => {
 		let target = event.target;
 		if (target.className == 'info-header-tab') {
 			for (let i = 0; i < tab.length; i++) {
@@ -59,7 +59,7 @@ window.addEventListener('DOMContentLoaded', function () {
 			}
 		}
 	});
-	
+
 	// Timer
 
 	let deadline = '2018-08-24 23:30:00';
@@ -123,14 +123,14 @@ window.addEventListener('DOMContentLoaded', function () {
 	 	overlay.style.display = "block";
 	 	document.body.style.overflow = 'hidden';
 	 });
-	 close.addEventListener('click', function () {
+	 close.addEventListener('click',  () => {
 	 	overlay.style.display = "none";
 	 	more.classList.remove('more-splash');
 	 	document.body.style.overflow = '';
 	 });
 
 	 for (let i = 0; i < descriptionBtn.length; i++) {
-	 	descriptionBtn[i].addEventListener('click', function () {
+	 	descriptionBtn[i].addEventListener('click', () => {
 	 	overlay.style.display = "block";
 	 	document.body.style.overflow = 'hidden';
 	 	});
