@@ -62,9 +62,9 @@ window.addEventListener('DOMContentLoaded', function () {
 */
 	// Timer
 
-	let deadline = '2018-09-24 23:30:00';
+	let deadline = '2018-08-24 23:30:00';
 
-	function getTimeRemaining(endtime) {
+	let getTimeRemaining = endtime => {
 		let t = Date.parse(endtime) - Date.parse(new Date()),
 		seconds = Math.floor( (t/1000) % 60 ),
 		minutes = Math.floor( (t/1000/60) % 60 ),
@@ -78,7 +78,7 @@ window.addEventListener('DOMContentLoaded', function () {
 		};
 	}
 
-	function setClock(id, endtime) {
+	let setClock = (id, endtime) => {
 
 		let timer = document.getElementById(id),
 		hours = timer.querySelector('.hours'),
