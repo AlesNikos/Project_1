@@ -2,7 +2,7 @@ window.addEventListener('DOMContentLoaded', function () {
 	
 	// Плавная прокрутка
 
-	let elements = document.querySelectorAll('a[href*="#"]'),
+	/*let elements = document.querySelectorAll('a[href*="#"]'),
 	anchors = [].slice.call(elements),
 	animationTime = 300,
 	framesCount = 20;
@@ -59,10 +59,10 @@ window.addEventListener('DOMContentLoaded', function () {
 			}
 		}
 	});
-
+*/
 	// Timer
 
-	let deadline = '2018-08-22 23:30:00';
+	let deadline = '2018-09-24 23:30:00';
 
 	function getTimeRemaining(endtime) {
 		let t = Date.parse(endtime) - Date.parse(new Date()),
@@ -98,12 +98,12 @@ window.addEventListener('DOMContentLoaded', function () {
 			} 
 
 			if (t.hours < 10) {
-				t.hours = '0' + t.hours;
+				t.hours = `0${t.hours}`;
 			}
 
 			hours.innerHTML = t.hours;
-			minutes.innerHTML = ('0' + t.minutes).slice(-2);
-			seconds.innerHTML = ('0' + t.seconds).slice(-2);
+			minutes.innerHTML = (`0${t.minutes}`).slice(-2);
+			seconds.innerHTML = (`0${t.seconds}`).slice(-2);
 		}
 
 		updateClock();
