@@ -2,28 +2,61 @@ window.addEventListener('DOMContentLoaded', function () {
 	
 	// Плавная прокрутка
 
-	let elements = document.querySelectorAll('a[href*="#"]'),
-	anchors = [].slice.call(elements),
-	animationTime = 300,
-	framesCount = 20;
+	let elements = document.querySelectorAll('a[href*="#"]');
 
-	anchors.forEach(function (item) {
+	elements.forEach(function (item) {
 		item.addEventListener('click', function (event) {
 			event.preventDefault();
-
-			let coordY = document.querySelector(item.getAttribute('href')).getBoundingClientRect().top;
-			let scroller = setInterval(function () {
-				let scrollBy = coordY / framesCount;
-
-				if (scrollBy > window.pageYOffset - coordY && window.innerHeight + window.pageYOffset < document.body.offsetHeight) {
-					window.scrollBy(0, scrollBy);
-				} else {
-					window.scrollTo(0, coordY);
-					clearInterval(scroller);
-				}
-			}, animationTime / framesCount);
+			
+			smoothScroll(item.getAttribute('href'));
+			
 		});
 	});
+
+	function currentYPosition() {
+	    
+	    if (self.pageYOffset) {
+	    	return self.pageYOffset;
+	    }
+	    return 0;
+	}
+
+
+	function elmYPosition(eID) {
+	    let elm = document.querySelector(eID);
+	    let y = elm.offsetTop;
+	    let node = elm;
+	    while (node.offsetParent && node.offsetParent != document.body) {
+	        node = node.offsetParent;
+	        y += node.offsetTop;
+	    } return y - 60;
+	}
+
+
+	function smoothScroll(eID) {
+	    let startY = currentYPosition();
+	    let stopY = elmYPosition(eID);
+	    let distance = stopY > startY ? stopY - startY : startY - stopY;
+	    if (distance < 100) {
+	        scrollTo(0, stopY); return;
+	    }
+	    let speed = Math.round(distance / 100);
+	    if (speed >= 20) speed = 20;
+	    let step = Math.round(distance / 25);
+	    let leapY = stopY > startY ? startY + step : startY - step;
+	    let timer = 0;
+	    if (stopY > startY) {
+	        for ( let i=startY; i<stopY; i+=step ) {
+	            setTimeout("window.scrollTo(0, "+leapY+")", timer * speed);
+	            leapY += step; if (leapY > stopY) leapY = stopY; timer++;
+	        } return;
+	    }
+	    for ( let i=startY; i>stopY; i-=step ) {
+	        setTimeout("window.scrollTo(0, "+leapY+")", timer * speed);
+	        leapY -= step; if (leapY < stopY) leapY = stopY; timer++;
+	    }
+	}
+
 
 	// Tabs
 
@@ -62,7 +95,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
 	// Timer
 
-	let deadline = '2018-08-22 23:30:00';
+	let deadline = '2018-09-22 23:30:00';
 
 	function getTimeRemaining(endtime) {
 		let t = Date.parse(endtime) - Date.parse(new Date()),
