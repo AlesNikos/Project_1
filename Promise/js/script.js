@@ -183,75 +183,87 @@ window.addEventListener('DOMContentLoaded', function () {
 
 	 	// Модальное окно
 
-	 	form.addEventListener('submit', function(event) {
-	 		event.preventDefault();
-	 		form.appendChild(statusMessage);
+ 	form.addEventListener('submit', function(event) {
+ 		event.preventDefault();
+ 		form.appendChild(statusMessage);
+ 		let formData = new FormData(form);
 
-	 		//AJAX
+ 		function postData(data) {
 
-	 		let request = new XMLHttpRequest();
-	 		request.open("POST", 'server.php');
+ 			return new Promise(function(resolve, reject) {
+ 				let request = new XMLHttpRequest();
 
-	 		request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+ 				request.open("POST", 'server.php');
 
-	 		let formData = new FormData(form);
-	 		
+ 				request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 
-	 		request.send(formData);
-	 		
-
-	 		request.onreadystatechange = function() {
-	 			if (request.readyState < 4) {
-	 				statusMessage.innerHTML = message.loading;
-	 			} else if (request.readyState === 4) {
-	 				if (request.status == 200 && request.status < 300) {
-	 					statusMessage.innerHTML = message.success;
-	 					//Добавляем контент на страницу
-	 				} else {
-	 					statusMessage.innerHTML = message.failure;
-	 				}
-	 			}
-	 		};
-	 		for (let i = 0; i < input.length; i++) {
-	 			input[i].value = '';
-	 			//Очищаем поля ввода
-	 		}
-	 	});
+ 				request.onreadystatechange = function() {
+		 			if (request.readyState < 4) {
+		 				resolve()
+		 			} else if (request.readyState === 4) {
+		 				if (request.status == 200 && request.status < 300) {
+		 					resolve()
+		 					//Добавляем контент на страницу
+		 				} else {
+		 					reject()
+		 				}
+		 			}
+		 		}
+		 		request.send(formData);
+ 			})
+ 		}
+ 		function clearInput() {
+ 			for (let i = 0; i < input.length; i++) {
+ 				input[i].value = '';
+ 			}
+ 		}
+ 		postData(formData)
+ 			.then( () => statusMessage.innerHTML = message.loading)
+ 			.then( () => statusMessage.innerHTML = message.success)
+ 			.catch( () => statusMessage.innerHTML = message.failure)
+ 			.then(clearInput)
+ 	});
 
 	 	// Контактная форма
 
 	 		form_1.addEventListener('submit', function(event) {
 	 		event.preventDefault();
 	 		form_1.appendChild(statusMessage);
+let formData = new FormData(form_1);
 
-	 		//AJAX
+ 		function postData(data) {
 
-	 		let request = new XMLHttpRequest();
-	 		request.open("POST", 'server.php');
+ 			return new Promise(function(resolve, reject) {
+ 				let request = new XMLHttpRequest();
 
-	 		request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+ 				request.open("POST", 'server.php');
 
-	 		let formData = new FormData(form_1);
-	 		
+ 				request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 
-	 		request.send(formData);
-	 		
-
-	 		request.onreadystatechange = function() {
-	 			if (request.readyState < 4) {
-	 				statusMessage.innerHTML = message.loading;
-	 			} else if (request.readyState === 4) {
-	 				if (request.status == 200 && request.status < 300) {
-	 					statusMessage.innerHTML = message.success;
-	 					//Добавляем контент на страницу
-	 				} else {
-	 					statusMessage.innerHTML = message.failure;
-	 				}
-	 			}
-	 		};
-	 		for (let i = 0; i < input.length; i++) {
-	 			input[i].value = '';
-	 			//Очищаем поля ввода
-	 		}
+ 				request.onreadystatechange = function() {
+		 			if (request.readyState < 4) {
+		 				resolve()
+		 			} else if (request.readyState === 4) {
+		 				if (request.status == 200 && request.status < 300) {
+		 					resolve()
+		 					//Добавляем контент на страницу
+		 				} else {
+		 					reject()
+		 				}
+		 			}
+		 		}
+		 		request.send(formData);
+ 			})
+ 		}
+ 		function clearInput() {
+ 			for (let i = 0; i < input.length; i++) {
+ 				input[i].value = '';
+ 			}
+ 		}
+ 		postData(formData)
+ 			.then( () => statusMessage.innerHTML = message.loading)
+ 			.then( () => statusMessage.innerHTML = message.success)
+ 			.catch( () => statusMessage.innerHTML = message.failure)
+ 			.then(clearInput)
 	 	});
 });
