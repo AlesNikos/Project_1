@@ -1,5 +1,7 @@
 window.addEventListener('DOMContentLoaded', function () {
 	
+	
+
 	let scrolling = require('../parts/scrolling.js'),
 		tab = require('../parts/tab.js'),
 		timer = require('../parts/timer.js'),
@@ -8,6 +10,7 @@ window.addEventListener('DOMContentLoaded', function () {
 		slider = require('../parts/slider.js'),
 		calc = require('../parts/calc.js');
 
+		
 		scrolling();
 		tab();
 		timer();

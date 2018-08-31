@@ -12,4 +12,4 @@ let myFunc = function(a){
 }
 console.log(each(arr, myFunc));
 
-module.exports = each(arr, myFunc);
+module.exports = each;

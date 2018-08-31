@@ -3,14 +3,14 @@ function scrolling() {
 
 	let elements = document.querySelectorAll('a[href*="#"]');
 
-	elements.forEach(function (item) {
-		item.addEventListener('click', function (event) {
+	for (let i = 0; i < elements.length; i++) {
+		elements[i].addEventListener('click', function (event) {
 			event.preventDefault();
 			
-			smoothScroll(item.getAttribute('href'));
+			smoothScroll(elements[i].getAttribute('href'));
 			
 		});
-	});
+	}
 
 	let currentYPosition = () => {
 	    
